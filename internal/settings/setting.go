@@ -16,6 +16,16 @@ type Server struct {
 
 var ServerSetting = &Server{}
 
+type Database struct {
+	Type     string
+	User     string
+	Password string
+	Host     string
+	DbName   string
+}
+
+var DatabaseSetting = &Database{}
+
 var cfg *ini.File
 
 // Setup initialize the configuration instance
@@ -27,6 +37,7 @@ func Setup() {
 	}
 
 	mapTo("server", ServerSetting)
+	mapTo("database", DatabaseSetting)
 }
 
 func mapTo(section string, v any) {
